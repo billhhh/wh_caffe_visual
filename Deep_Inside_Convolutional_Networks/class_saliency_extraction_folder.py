@@ -36,8 +36,6 @@ def forward(img_path,src_img):
 	except(ValueError), e:
 		print e
 		return
-	else:
-		return
 		
 	input_image = input_image
 
@@ -83,14 +81,8 @@ for pic_name in sblst:
 	if pic_name.endswith('.db') == True:
 		continue
 	else:
-		try:
-			cnt+=1
-			forward(filepath_src,pic_name)
-		except(ValueError), e:
-			print e
-			continue
-		else:
-			continue
+		cnt+=1
+		forward(filepath_src,pic_name)
 
 def visSquare(data1, padsize=1, padval=0):
     data = copy.deepcopy(data1) 
