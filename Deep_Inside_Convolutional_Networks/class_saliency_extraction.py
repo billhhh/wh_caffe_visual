@@ -15,7 +15,7 @@ import caffe
 # and the image you would like to classify.
 MODEL_FILE = 'googlenet_deploy.prototxt'
 PRETRAINED = '../11_7_finetune_googlenet_newFood724_iter_100000.caffemodel'
-IMAGE_FILE = 'apple_80.jpg'
+IMAGE_FILE = 'images/red_bean_paste_mooncake89.jpg'
 
 caffe.set_mode_cpu()
 net = caffe.Classifier(MODEL_FILE, PRETRAINED,
