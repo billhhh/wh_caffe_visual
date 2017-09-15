@@ -35,6 +35,9 @@ def forward(img_path,src_img):
 		input_image = caffe.io.load_image(IMAGE_FILE)
 	except(ValueError), e:
 		print e
+		return
+	else
+		return
 		
 	input_image = input_image
 
