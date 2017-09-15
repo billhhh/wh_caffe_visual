@@ -30,7 +30,12 @@ def forward(img_path,src_img):
 						   channel_swap=(2,1,0),
 						   raw_scale=255,
 						   image_dims=(256, 256))
-	input_image = caffe.io.load_image(IMAGE_FILE)
+	
+	try:
+		input_image = caffe.io.load_image(IMAGE_FILE)
+	except(ValueError), e:
+		print e
+		
 	input_image = input_image
 
 	n_iterations = 10000
@@ -78,7 +83,7 @@ for pic_name in sblst:
 		try:
 			cnt+=1
 			forward(filepath_src,pic_name)
-		except(IOError), e:
+		except(ValueError), e:
 			print e
 			continue
 		else:
