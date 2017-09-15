@@ -13,9 +13,9 @@ import caffe
 
 # Set the right path to your model definition file, pretrained model weights,
 # and the image you would like to classify.
-MODEL_FILE = 'finetune_googlenet_newFood724_aug_test.prototxt'
+MODEL_FILE = 'googlenet_deploy.prototxt'
 PRETRAINED = '../11_7_finetune_googlenet_newFood724_iter_100000.caffemodel'
-IMAGE_FILE = '/apple_80.jpg'
+IMAGE_FILE = 'apple_80.jpg'
 
 caffe.set_mode_cpu()
 net = caffe.Classifier(MODEL_FILE, PRETRAINED,
@@ -29,8 +29,8 @@ input_image = input_image
 n_iterations = 10000
 label_index = 281  # Index for cat class
 caffe_data = np.random.random((1,3,227,227))
-caffeLabel = np.zeros((1,1000,1,1))
-caffeLabel[0,label_index,0,0] = 1;
+caffeLabel = np.zeros((1,1,1000))
+caffeLabel[0,0,label_index] = 1;
 
 def visSquare(data1, padsize=1, padval=0):
     data = copy.deepcopy(data1) 
