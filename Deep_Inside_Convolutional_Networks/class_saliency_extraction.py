@@ -13,9 +13,9 @@ import caffe
 
 # Set the right path to your model definition file, pretrained model weights,
 # and the image you would like to classify.
-MODEL_FILE = 'D:/gitbill/wh_caffe_visual/Deep_Inside_Convolutional_Networks/finetune_googlenet_newFood724_aug_test.prototxt'
-PRETRAINED = 'D:/gitbill/wh_caffe_visual/11_7_finetune_googlenet_newFood724_iter_100000.caffemodel'
-IMAGE_FILE = 'D:/gitbill/wh_caffe_visual/Deep_Inside_Convolutional_Networks/apple_80.jpg'
+MODEL_FILE = 'finetune_googlenet_newFood724_aug_test.prototxt'
+PRETRAINED = '../11_7_finetune_googlenet_newFood724_iter_100000.caffemodel'
+IMAGE_FILE = '/apple_80.jpg'
 
 caffe.set_mode_cpu()
 net = caffe.Classifier(MODEL_FILE, PRETRAINED,

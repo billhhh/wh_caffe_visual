@@ -1,42 +1,12 @@
 name: "FineTuneGoogleNet"
-layer {
-  name: "data"
-  type: "Data"
-  top: "data"
-  top: "label"
-  include {
-    phase: TRAIN
-  }
-  transform_param {
-    mirror: true
-    crop_size: 224
-    mean_file: "./newFood724_aug_mean.binaryproto"
-  }
-   data_param {
-    source: "./newFood724_train_lmdb"
-    batch_size: 64
-    backend: LMDB
-  }
-}
-layer {
-  name: "data"
-  type: "Data"
-  top: "data"
-  top: "label"
-  include {
-    phase: TEST
-  }
-  transform_param {
-    mirror: false
-    crop_size: 224
-    mean_file: "./newFood724_aug_mean.binaryproto"
-  }
-   data_param {
-    source: "D:/dataset/newFood_724_clean/newFood724_test_lmdb"
-    batch_size: 64
-    backend: LMDB
-  }
-}
+input: "data"
+input_dim: 1
+input_dim: 3 
+input_dim: 227
+input_dim: 227
+
+force_backward: true
+
 layer {
   name: "conv1/7x7_s2"
   type: "Convolution"
