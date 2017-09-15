@@ -17,40 +17,11 @@ from shutil import copyfile
 from math import floor
 from random import shuffle
 
-list_path = './'
-src_dir = 'images'
-cnt_list = 'cnt_list.txt'
-
-class_names = []
-for filename in os.listdir(src_dir):
-    path = os.path.join(src_dir, filename)
-    if os.path.isdir(path):
-        class_names.append(filename)
-
-lst = class_names
-
-lst.sort()
-# print(lst)
-
-for ind in range(0,len(lst)):
-    sblst=os.listdir(os.path.join(src_dir,lst[ind]))
-    shuffle(sblst)
-	print(lst[ind]+":\n")
-    print(len(sblst))
-    cnt=0
-    for pic_name in sblst:
-        filepath_src= src_dir + '/' + lst[ind] + '/' + pic_name
-        if pic_name.endswith('.db') == True:
-            continue
-        else:
-            cnt+=1
-            forward(filepath_src,pic_name)
-
 def forward(img_path,src_img):
 	# Set the right path to your model definition file, pretrained model weights,
 	# and the image you would like to classify.
 	MODEL_FILE = 'googlenet_deploy.prototxt'
-	PRETRAINED = '../11_7_finetune_googlenet_newFood724_iter_100000.caffemodel'
+	PRETRAINED = '11_7_finetune_googlenet_newFood724_iter_100000.caffemodel'
 	IMAGE_FILE = img_path
 
 	caffe.set_mode_cpu()
@@ -88,8 +59,24 @@ def forward(img_path,src_img):
 	plt.subplot(1,2,2)
 	plt.imshow(net.transformer.deprocess('data', net.blobs['data'].data[0]))
 	#plt.show()
-	target_img = './saliency/'+src_img
+	target_img = src_dir +'_saliency/'+src_img
 	plt.savefig(target_img)
+
+list_path = './'
+src_dir = 'mee_kuah'
+os.mkdir(src_dir +'_saliency')
+
+sblst=os.listdir(src_dir)
+shuffle(sblst)
+print(len(sblst))
+cnt=0
+for pic_name in sblst:
+	filepath_src= src_dir + '/' + pic_name
+	if pic_name.endswith('.db') == True:
+		continue
+	else:
+		cnt+=1
+		forward(filepath_src,pic_name)
 
 def visSquare(data1, padsize=1, padval=0):
     data = copy.deepcopy(data1) 
