@@ -75,8 +75,14 @@ for pic_name in sblst:
 	if pic_name.endswith('.db') == True:
 		continue
 	else:
-		cnt+=1
-		forward(filepath_src,pic_name)
+		try:
+			cnt+=1
+			forward(filepath_src,pic_name)
+		except(IOError), e:
+			print e
+			continue
+		else:
+			continue
 
 def visSquare(data1, padsize=1, padval=0):
     data = copy.deepcopy(data1) 
