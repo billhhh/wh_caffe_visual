@@ -36,7 +36,7 @@ def forward(img_path,src_img):
 	except(ValueError), e:
 		print e
 		return
-	else
+	else:
 		return
 		
 	input_image = input_image
