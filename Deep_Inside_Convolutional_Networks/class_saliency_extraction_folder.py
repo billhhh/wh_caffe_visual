@@ -69,7 +69,7 @@ def forward(img_path,src_img):
 	plt.savefig(target_img)
 
 list_path = './'
-src_dir = 'mee_kuah'
+src_dir = 'tauhu_goreng'
 os.mkdir(src_dir +'_saliency')
 
 sblst=os.listdir(src_dir)
